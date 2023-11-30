@@ -9,7 +9,7 @@ import numpy as np
 from freetype import *
 
 class UIText():
-    def __init__(self, text = "", x = 0, y = 750, align = "left", sizefont = 24, valign = "top", xoffset = 0, yoffset = 0, visible = True, font = 'TimesNewRoman'):
+    def __init__(self, text = "", x = 0, y = 750, align = "left", sizefont = 24, valign = "top", xoffset = 0, yoffset = 0, visible = True, font = 'TimesNewRoman', size = 0):
         self.text = text
         # origin in bottom left
         self.align = align

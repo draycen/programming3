@@ -21,7 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Border.py" />
     <Compile Include="Cube.py" />
+    <Compile Include="GamePlay.py" />
     <Compile Include="My3DGame.py" />
     <Compile Include="Pyramid.py" />
     <Compile Include="TetrisBlock.py" />

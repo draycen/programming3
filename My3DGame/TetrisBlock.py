@@ -8,8 +8,8 @@ from SlowCube import SlowCube
 _lightVector = np.asfarray([0,0,1,0])
 
 class OBlock(SlowCube):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, pos):
+        super().__init__(pos)
         self.verts = np.asfarray([(  2, -1, -2),
                                   (  2,  1, -2),
                                   ( -2,  1, -2),
@@ -19,10 +19,11 @@ class OBlock(SlowCube):
                                   ( -2, -1,  2),
                                   ( -2,  1,  2)])
         self.color = np.asfarray([1,1,0])
+        self.name = "O"
         
 
-    def Update(self, deltaTime):
-        super().Update(deltaTime)
+    def Update(self, deltaTime, move):
+        super().Update(deltaTime, move)
 
     def _DrawBlock(self):
         super()._DrawBlock()
@@ -31,8 +32,8 @@ class OBlock(SlowCube):
         super().Render()
 
 class IBlock(SlowCube):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, pos):
+        super().__init__(pos)
         self.verts = np.asfarray([(  4, -1,-1),
                                   (  4,  1,-1),
                                   ( -4,  1,-1),
@@ -43,10 +44,12 @@ class IBlock(SlowCube):
                                   ( -4,  1, 1)])
                                   
         self.color = np.asfarray([173/255, 216/255, 230/255])
+        self.name = "I"
+
         
 
-    def Update(self, deltaTime):
-        super().Update(deltaTime)
+    def Update(self, deltaTime, move):
+        super().Update(deltaTime, move)
 
     def _DrawBlock(self):
         super()._DrawBlock()
@@ -55,8 +58,8 @@ class IBlock(SlowCube):
         super().Render()
 
 class SBlock(SlowCube):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,pos):
+        super().__init__(pos)
         self.verts = np.asfarray([(  3,  0, -1),
                                   (  3,  2, -1),
                                   ( -1,  2, -1),
@@ -98,10 +101,11 @@ class SBlock(SlowCube):
                                    ( 0, 1, 0, 0),
                                    ( 0,-1, 0, 0)])
         self.color = np.asfarray([0,1,0])
+        self.name = "S"
         
 
-    def Update(self, deltaTime):
-        super().Update(deltaTime)
+    def Update(self, deltaTime, move):
+        super().Update(deltaTime, move)
 
     def _DrawBlock(self):
         super()._DrawBlock()
@@ -110,8 +114,8 @@ class SBlock(SlowCube):
         super().Render()
 
 class ZBlock(SlowCube):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,pos):
+        super().__init__(pos)
         self.verts = np.asfarray([(  3,  0, -1),
                                   (  3,  2, -1),
                                   ( -1,  2, -1),
@@ -153,10 +157,11 @@ class ZBlock(SlowCube):
                                    ( 0, 1, 0, 0),
                                    ( 0,-1, 0, 0)])
         self.color = np.asfarray([1,0,0])
+        self.name = "Z"
         
 
-    def Update(self, deltaTime):
-        super().Update(deltaTime)
+    def Update(self, deltaTime, move):
+        super().Update(deltaTime, move)
 
     def _DrawBlock(self):
         super()._DrawBlock()
@@ -165,8 +170,8 @@ class ZBlock(SlowCube):
         super().Render()
 
 class LBlock(SlowCube):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,pos):
+        super().__init__(pos)
         self.verts = np.asfarray([(  3, -2, -1),
                                   (  3,  0, -1),
                                   ( -1,  0, -1),
@@ -209,10 +214,11 @@ class LBlock(SlowCube):
                                    ( 0, 1, 0, 0),
                                    ( 0,-1, 0, 0)])
         self.color = np.asfarray([1,.5,0])
+        self.name = "L"
         
 
-    def Update(self, deltaTime):
-        super().Update(deltaTime)
+    def Update(self, deltaTime, move):
+        super().Update(deltaTime, move)
 
     def _DrawBlock(self):
         super()._DrawBlock()
@@ -221,8 +227,8 @@ class LBlock(SlowCube):
         super().Render()
 
 class JBlock(SlowCube):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,pos):
+        super().__init__(pos)
         self.verts = np.asfarray([(  3, -2, -1),
                                   (  3,  0, -1),
                                   ( -1,  0, -1),
@@ -265,10 +271,11 @@ class JBlock(SlowCube):
                                    ( 0, 1, 0, 0),
                                    ( 0,-1, 0, 0)])
         self.color = np.asfarray([0,0,1])
+        self.name = "J"
         
 
-    def Update(self, deltaTime):
-        super().Update(deltaTime)
+    def Update(self, deltaTime, move):
+        super().Update(deltaTime, move)
 
     def _DrawBlock(self):
         super()._DrawBlock()
@@ -277,8 +284,8 @@ class JBlock(SlowCube):
         super().Render()
 
 class TBlock(SlowCube):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,pos):
+        super().__init__(pos)
         self.verts = np.asfarray([(  1,  0, -1),
                                   (  1,  2, -1),
                                   ( -1,  2, -1),
@@ -321,10 +328,10 @@ class TBlock(SlowCube):
                                    ( 0, 1, 0, 0),
                                    ( 0,-1, 0, 0)])
         self.color = np.asfarray([1,0,1])
-        
+        self.name = "T"
 
-    def Update(self, deltaTime):
-        super().Update(deltaTime)
+    def Update(self, deltaTime, move):
+        super().Update(deltaTime, move)
 
     def _DrawBlock(self):
         super()._DrawBlock()

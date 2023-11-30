@@ -85,14 +85,21 @@ def Init():
     _vertex_normal = glGetAttribLocation(_shader, "vertex_normal")
 
 class Cube:
-    def __init__(self):
+    def __init__(self, pos):
         self.color = np.asfarray([1,.5,1])
+        self.pos = pos
 
         self.ang = 0
         self.axis = (3,1,1)
 
-    def Update(self, deltaTime):
-        self.ang += 50 * deltaTime
+    def SetPos(self,pos):
+        self.pos = pos
+
+    def GetPos(self):
+        return self.pos
+
+    def Update(self, deltaTime, move):
+        self.pos += move
 
     def _DrawBlock(self):
         global _verts
@@ -129,7 +136,7 @@ class Cube:
     def Render(self):
         m = glGetDouble(GL_MODELVIEW_MATRIX)
 
-        glRotatef(self.ang, *self.axis)
+        glTranslatef(*self.pos)
         self._DrawBlock()
 
         glLoadMatrixf(m)

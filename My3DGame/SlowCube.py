@@ -2,11 +2,12 @@
 from OpenGL.GL import *
 import numpy as np
 import math
+from OpenGL.GLU import *
 
 _lightVector = np.asfarray([0,0,1,0])
 
 class SlowCube:
-    def __init__(self):
+    def __init__(self, pos):
         self.verts = np.asfarray([(  1, -1, -1),
                                   (  1,  1, -1),
                                   ( -1,  1, -1),
@@ -29,15 +30,23 @@ class SlowCube:
                                    ( 0,-1, 0, 0)])
         self.color = np.asfarray([0,0,1])
 
-        self.ang = 0
-        self.axis = (3,1,1)
+        self.ang = [0,0,0]
+        self.axis = None
+        self.pos = pos
+        self.rx = None
+        self.ry = None
+        self.rz = None
+        self.rw = None
         
-        self.tx = None
-        self.ty = None
-        self.tz = None
 
-    def Update(self, deltaTime):
-        self.ang += 50.0*deltaTime
+    def SetPos(self,pos):
+        self.pos = pos
+
+    def GetPos(self):
+        return self.pos
+
+    def Update(self, deltaTime, move):
+        self.pos += move
 
    
 
@@ -57,17 +66,20 @@ class SlowCube:
         glEnd()
 
     def Translate(self, tx, ty, tz):
-        self.tx = tx
-        self.ty = ty
-        self.tz = tz
+        self.pos += np.asfarray([tx,ty,tz])
+
+    def Rotate(self,ang, di):
+        self.ang[di] += ang
+
 
     def Render(self):
         #m  = glGetDouble(GL_MODELVIEW_MATRIX)
 
         glPushMatrix()
-        if self.tx is not None and self.ty is not None and self.tz is not None:
-            glTranslatef(self.tx, self.ty, self.tz)
-        glRotatef(self.ang, *self.axis) # the star act as this (self.ang, self.axis[0], self.axis[1], self.axis[2]) 
+        glTranslatef(*self.pos) # the star act as this (self.ang, self.axis[0], self.axis[1], self.axis[2]) 
+        glRotatef(self.ang[0], 1, 0, 0)  # Rotate around x-axis
+        glRotatef(self.ang[1], 0, 1, 0)  # Rotate around y-axis
+        glRotatef(self.ang[2], 0, 0, 1)  # Rotate around z-axis
         self._DrawBlock()
         glPopMatrix()
 
